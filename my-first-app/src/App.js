@@ -7,7 +7,8 @@ import UserList from './screens/UserList';
 function App() {
   return (
     <div>
-      <UserList/>
+      {/* <UserList/> */}
+      <Register/>
     </div>
   );
 }
