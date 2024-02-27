@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { Link, Navigate } from 'react-router-dom';
 
 const expensiveCalculation = (num) => {
     console.log("calculation...")
@@ -13,7 +14,7 @@ function Register() {
 
     const [todos, setTodos] = useState([]);
     const [count, setCount] = useState(0);
-    const calculation = useMemo(()=>expensiveCalculation(count),[count])  
+    const calculation = useMemo(() => expensiveCalculation(count), [count])
 
     const increment = () => {
         setCount((c) => c + 1);
@@ -23,29 +24,32 @@ function Register() {
         setTodos((e) => [...e, "Todo Task"])
     }
 
-    
 
-return (
-    <div>
-        <div>
-            <h2>My Todos</h2>
-            {
-                todos.map((todo, index) => {
-                    return <p key={index}>{todo}</p>
-                })
-            }
-            <button onClick={addTodo}>Add Todo</button>
-        </div>
-        <hr />
 
+    return (
         <div>
-            Count : {count}
-            <button onClick={increment}>+</button>
-            <h2>Expensive Calculation</h2>
-            {calculation}
+            <div>
+                <h2>My Todos</h2>
+                {
+                    todos.map((todo, index) => {
+                        return <p key={index}>{todo}</p>
+                    })
+                }
+                <button onClick={addTodo}>Add Todo</button>
+            </div>
+            <hr />
+
+            <div>
+                Count : {count}
+                <button onClick={increment}>+</button>
+                <h2>Expensive Calculation</h2>
+                {calculation}
+            </div>
+
+            <Link to="/userList">UserList Screen</Link>
+            {/* <Navigate to="/userList" replace={true}>Navigate UserList Screen</Navigate> */}
         </div>
-    </div>
-)
+    )
 }
 
 export default Register
